@@ -1,99 +1,102 @@
-# Webpack Starter Kit
+<a name="readme-top"></a>
 
-## Clone This Repo
+<!-- HEADER -->
+<h1 align="center">Hotel Manager</h1>
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+<h3 align="center">A Hotel Booking Site</h3>
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+<!-- <h4 align="center"><a href="https://vfields.github.io/travel-tracker/"><strong>Deploy Link</strong></a> | <a href="https://github.com/vfields/travel-tracker"><strong>Explore The Docs »</strong></a></h4> -->
 
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+<h5 align="center">(PS. Your username is <code>traveler</code> plus any number between <code>1-50</code>, i.e. <code>traveler40</code>, and your password is <code>travel</code>!)</h5>
+
+<p></p>
+
+<!-- TABLE OF CONTENTS -->
+<!-- <details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li>
+        <a href="#features">Features</a>
+        <ul>
+            <li><a href="#reflections">Reflections</a>
+        </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details> -->
+
+## About The Project
+<!-- Interested in traveling the world, but having trouble organizing your trips? Travel Tracker will not only record and display your past, pending, and upcoming trips, but it will also allow you to request a new trip to be reviewed by one of its trusted travel agents! This password-protected site also keeps track of how much you've spent during the current year on travel, so you know where you stand financially as you consider your next destination.
+<br>
+<p align="center">
+    <img width="500" src="https://media.giphy.com/media/JpoDBwkRLFbMkR3Cks/giphy.gif" alt="Travel Tracker preview gif">
+</p>
+<br />
+This solo project was assigned at the end of the second module of Turing's Front-End Engineering program, about 11-12 weeks into its students learning how to code. The details of this project are outlined in <a href="https://frontend.turing.edu/projects/travel-tracker.html">this</a> project spec. -->
+
+### Built With
+
+![JavaScript][JavaScript-shield]
+![CSS][CSS-shield]
+![HTML5][HTML-shield]
+![Mocha][Mocha-shield]
+![Chai][Chai-shield]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Setup
+- Clone the repository to your local machine
+- Clone down <a href="https://github.com/turingschool-examples/overlook-api">this</a> local server
+- `cd` into the local server
+- Run `npm install`, and then `npm start`
+- Once the local server is launched, open a new terminal tab and `cd` into this project
+- Run `npm install` to install project dependencies
+- Run `npm start` to launch the live server
+- Copy and paste the provided localhost URL into your browser
+- Remember, your username is <code>traveler</code> plus any number between <code>1-50</code>, i.e. <code>traveler40</code>, and your password is <code>travel</code>!
+- Explore and enjoy!
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Then install the library dependencies. Run:
+## Roadmap
 
-```bash
-npm install
-```
+<!-- - [ ] Create travel agent interaction
+- [ ] Utilize DELETE network request via travel agent interaction -->
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Where to Add Your Code
+## Features
 
-### JavaScript
+<!-- - Utilizes class-to-class interaction and a robust Mocha and Chai testing suite
+- Implements both GET and POST network requests via fetch API to retrieve, display, and add new user data
+- Handles both network request- and user-errors -->
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+### Reflections
+<!-- <b>Wins:</b><br>
+Although I worked with asynchronous JavaScript during this module's group project, I feel this solo project solidified my understanding of it. This project also allowed me time to dedicate to better understanding error-handling, and I feel I've a firmer grasp on handling both network request and user generated errors for it!
+<p>
+<b>Challenges:</b><br>
+While I can see significant improvement in my ability to connect data and write dynamic code, I still feel there is some unnecessary repetition in my script and, therefore, I know that there is a cleaner/more dynamic solution to connect these data. -->
 
-**Create all of your feature code files in the `src` directory.**
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+## Contact
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+Dana Truong | [LinkedIn](https://www.linkedin.com/in/dana-truong-a1b35a250/) | [GitHub](https://github.com/tramtram1130)<br>
 
-### HTML
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+<!-- MARKDOWN LINKS & IMAGES -->
+[JavaScript-shield]: https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[CSS-shield]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[HTML-shield]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[Mocha-shield]: https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white
+[Chai-shield]: https://img.shields.io/badge/Chai-A30701?style=for-the-badge&logo=chai&logoColor=white
