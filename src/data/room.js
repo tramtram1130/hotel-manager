@@ -72,3 +72,7 @@ const roomsData = [
     costPerNight: 350.31
   }
 ]
+
+module.exports = {
+  roomsData 
+};
