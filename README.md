@@ -7,7 +7,7 @@
 
 <!-- <h4 align="center"><a href="https://vfields.github.io/travel-tracker/"><strong>Deploy Link</strong></a> | <a href="https://github.com/vfields/travel-tracker"><strong>Explore The Docs »</strong></a></h4> -->
 
-<h5 align="center">(PS. Your username is <code>customer</code> plus any number between <code>1-50</code>, i.e. <code>customer25</code>, and your password is <code>travel</code>!)</h5>
+<h5 align="center">(PS. Your username is <code>customer</code> plus any number between <code>1-50</code>, i.e. <code>customer25</code>, and your password is <code>yubaba</code>!)</h5>
 
 <p></p>
 
