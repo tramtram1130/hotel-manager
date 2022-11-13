@@ -44,26 +44,33 @@ body {
 }
 
 .date-form-container, 
-.room-form-container, 
 .button-container {
   display: flex;
   flex-direction: column;
 }
 
+.room-form-container {
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+
 .date-form, 
 .room-form, 
-.check-availibility-button, 
+.check-date-availability-button, 
+.check-room-availability-button,
 .guest-portal-button,
 .book-button {
   padding: 10px;
   margin: 10px 0px 10px 0px;
-  width: 14vw;
+  width: 17vw;
   border: 0;
   border-radius: 3px;
   box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
 }
 
-.check-availibility-button, 
+.check-date-availability-button, 
+.check-room-availability-button,
 .guest-portal-button,
 .book-button {
   background-color: rgb(156, 156, 156);
@@ -71,7 +78,8 @@ body {
   transition-duration: 0.4s;
 }
 
-.check-availibility-button:hover, 
+.check-date-availability-button:hover, 
+.check-room-availability-button:hover,
 .guest-portal-button:hover,
 .book-button:hover {
   background-color: #626262;
@@ -126,7 +134,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-  /* margin-bottom: 20vh; */
+  margin-bottom: 10vh;
   /* border: 2px solid black; */
 }
 
@@ -141,9 +149,10 @@ body {
   justify-content: center;
   background-color: white;
   height: fit-content;
-  width: 75vw;
+  width: 55vw;
   margin-top: 15vh;
-  overflow-y:auto;
+  margin-bottom: 10vh;
+  /* overflow-y:auto; */
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
