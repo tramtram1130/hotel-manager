@@ -77,7 +77,6 @@ body {
 .guest-portal-container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 }
 
 .all-bookings-container {
@@ -99,15 +98,21 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  margin-bottom: 30vh;
+  margin-bottom: 20vh;
   /* border: 2px solid black; */
 }
 
 .past-bookings-container, 
-.future-bookings-container, 
+.future-bookings-container {
+  background-color: white;
+  height: 30vh;
+  width: 45vw;
+  overflow-y:auto;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
 .spending-container {
   background-color: white;
-  height: fit-content;
   width: 45vw;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
