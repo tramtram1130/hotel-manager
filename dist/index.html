@@ -4,13 +4,67 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap">
+  <title>Yubaba's Bath House & Resort</title>
 </head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
+<body class="body-container">
+  <section class="greeting-container">
+    <h3 class="resort-name">Yubaba's Bath House & Resort</h3>
+    <img class="resort-image" src="./images/bathhouse.png" alt="turing logo">
+    <section class="booking-container">
+      <div class="all-forms-container">
+        <section class="date-form-container">
+          <!-- <label for="date-of-stay">Date of Stay:</label> -->
+        <input type="date"class="date-form"name="trip-start"value="2022-11-12"max="2023-12-31">
+        </section>
+        <section class="room-form-container">
+          <!-- <label for="room-type-selection">Room Type:</label> -->
+          <select class="room-form" name="rooms-list" form="room-form">
+            <option value="single room">Single Room</option>
+            <option value="junior suite">Junior Suite</option>
+            <option value="suite">Suite</option>
+            <option value="residential suite">Residential Suite</option>
+          </select>
+        </section>
+        <section class="button-container">
+          <button class="check-availibility-button" type="button">Check Availability</button>
+        </section>
+        <section class="button-container">
+          <button class="guest-portal-button" type="button">Guest Portal</button>
+        </section>
+     </div>
+    </section>
+  </section>
+  <section class="guest-portal-container">
+    <section class="all-bookings-container">
+      <section class="past-bookings-container">
+        <h3 class="past-bookings-title">Past Bookings</h3>
+        <section class="past-bookings-body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+          sed do eiusmod tempor incididunt ut labore et dolore magna 
+          aliqua. Diam sit amet nisl suscipit adipiscing bibendum 
+          est ultricies integer.
+        </section>
+      </section>
+      <section class="future-bookings-container">
+        <h3 class="future-bookings-title">Future Bookings</h3>
+        <section class="future-bookings-body">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+          sed do eiusmod tempor incididunt ut labore et dolore magna 
+          aliqua. Diam sit amet nisl suscipit adipiscing bibendum 
+          est ultricies integer.
+        </section>
+      </section>
+    </section>
+    <div class="spending-container-styling">
+      <section class="spending-container">
+        <h3 class="spending-title">Total Spent: $$$</h3>
+      </section>
+    </div>
+  </section>
   
+
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
