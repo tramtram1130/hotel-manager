@@ -63,17 +63,21 @@ body {
 .book-button {
   padding: 10px;
   margin: 10px 0px 10px 0px;
-  width: 17vw;
+  width: 19.5vw;
   border: 0;
   border-radius: 3px;
   box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.book-button {
+  width: 8vw;
 }
 
 .check-date-availability-button, 
 .check-room-availability-button,
 .guest-portal-button,
 .book-button {
-  background-color: rgb(156, 156, 156);
+  background-color: rgb(118, 118, 118);
   color: white;
   transition-duration: 0.4s;
 }
@@ -82,7 +86,7 @@ body {
 .check-room-availability-button:hover,
 .guest-portal-button:hover,
 .book-button:hover {
-  background-color: #626262;
+  background-color: #505050;
   color: white;
 }
 
@@ -115,7 +119,8 @@ body {
 .future-bookings-title, 
 .future-bookings-body,
 .available-rooms-title,
-.available-rooms-body {
+.available-rooms-body,
+.booked-message-title {
   margin: 20px 40px 20px 40px;
 }
 
@@ -156,6 +161,34 @@ body {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
+.available-rooms-title,
+.apology-title,
+.past-bookings-title,
+.future-bookings-title,
+.spending-title,
+.booked-message-title {
+  font-family: 'Noto Sans Mende Kikakui', sans-serif;
+}
+
+.apology-title,
+.booked-message-title {
+  margin-top: -.7vh;
+  text-align: -webkit-center;
+}
+
+.booked-message-title {
+  margin-top: 20px;
+}
+
+p {
+  font-family: 'Noto Sans Mende Kikakui', sans-serif;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+.room-type-and-cost {
+  font-size: 2.5vh;
+}
 
 .hidden {
   display: none;

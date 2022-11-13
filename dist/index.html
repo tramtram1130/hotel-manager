@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel&family=Noto+Sans+Mende+Kikakui&display=swap">
   <title>Yubaba's Bath House & Resort</title>
 </head>
 <body class="body-container">
@@ -14,8 +14,7 @@
     <section class="booking-container">
       <div class="all-forms-container">
         <section class="date-form-container">
-          <!-- <label for="date-of-stay">Date of Stay:</label> -->
-        <input type="date"class="date-form"name="trip-start"value="2022-11-12"max="2023-12-31">
+          <input aria-label="date picker" type="date" class="date-form" name="trip-start" value="2022-11-12" max="2023-12-31">
         </section>
         <section class="button-container">
           <button class="check-date-availability-button" type="button">Check Date Availability</button>
@@ -56,9 +55,10 @@
   <div class="available-rooms-styling">
     <section class="available-rooms-container hidden">
       <h2 class="available-rooms-title">Available Rooms</h2>
+      <h2 class="booked-message-title hidden">Booked! Your new reservation is reflected in your account.</h2>
+      <h4 class="apology-title hidden">(There are no available rooms based on the chosen criteria)</h4>
       <section class="room-form-container">
-        <!-- <label for="room-type-selection">Room Type:</label> -->
-        <select class="room-form" name="rooms-list" form="room-form">
+        <select aria-label="room picker" class="room-form" name="rooms-list" form="room-form">
           <option value="single room">Single Room</option>
           <option value="junior suite">Junior Suite</option>
           <option value="suite">Suite</option>

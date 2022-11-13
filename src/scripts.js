@@ -6,6 +6,7 @@ import './css/styles.css';
 import Customer from './classes/Customer.js'
 import Room from './classes/Room.js'
 import AllBookings from './classes/Booking.js'
+import { allBookedData } from './data/allRoomsBooked';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/bathhouse.png'
@@ -17,20 +18,22 @@ let roomsData
 let bookingsData
 let currentUser
 let today = ((new Date()).toISOString()).split('T')[0]
+let allBookedTestData = new AllBookings(allBookedData)
 
 // QUERY SELECTORS
 
 const pastBookings = document.querySelector('.past-bookings-body') 
 const futureBookings = document.querySelector('.future-bookings-body')
-const bookingsView = document.querySelector('.all-bookings-container')
-const financeView = document.querySelector('.spending-container')
 const totalSpending = document.querySelector('.spending-title')
 const guestPortalButton = document.querySelector('.guest-portal-button')
 const guestPortalView = document.querySelector('.guest-portal-container')
 const dateForm = document.querySelector('.date-form')
 const roomForm = document.querySelector('.room-form')
+const apologyMessage = document.querySelector('.apology-title')
+const bookedMessage = document.querySelector('.booked-message-title')
 const checkDateAvailabilityButton = document.querySelector('.check-date-availability-button')
 const checkRoomAvailabilityButton = document.querySelector('.check-room-availability-button')
+const availableRoomsTitle = document.querySelector('.available-rooms-title')
 const availableRoomsDisplay = document.querySelector('.available-rooms-body')
 const availableRoomsView = document.querySelector('.available-rooms-container')
 
@@ -63,8 +66,32 @@ function instantiateData() {
     .catch(err => console.log(err))
 }
 
+// function instantiateUpdatedData() {
+//   Promise.all([
+//     gatherData('http://localhost:3001/api/v1/customers'),
+//     gatherData('http://localhost:3001/api/v1/rooms'),
+//     gatherData('http://localhost:3001/api/v1/bookings')
+//   ]).then(data => {
+    
+//   })
+// }
+
+function postData(newBooking) {
+  fetch('http://localhost:3001/api/v1/bookings', {
+    method: 'POST',
+    body: JSON.stringify(newBooking),
+    headers: {
+      'Content-Type': 'application/json'
+      }
+  })
+  .then(response => response.json())
+  .then(response => instantiateData())
+  .then(response => displaySuccessfulBooking())
+  .catch(err => console.log(err))
+}
+
 function renderUser() {
-  currentUser = new Customer(customersData[0])
+  currentUser = new Customer(customersData[1])
   populateDashboard()
   tidyUpDateForm()
 }
@@ -73,7 +100,7 @@ function populateDashboard() {
   currentUser.getPastBookings(bookingsData.bookings)
   currentUser.getFutureBookings(bookingsData.bookings)
   currentUser.getTotalSpent(roomsData)
-  let totalSpent = (Math.floor(currentUser.totalSpending * 100) / 100).toFixed(2)
+  let totalSpent = (Math.floor((currentUser.getTotalSpent(roomsData)) * 100) / 100).toFixed(2)
 
   pastBookings.innerHTML = ''
   currentUser.pastBookings.forEach(booking => {
@@ -88,12 +115,19 @@ function populateDashboard() {
 
 function getAvailableRooms() {
   let unavailableRooms = bookingsData.getUnavailableRooms(dateForm.value)
+  console.log(unavailableRooms)
   let availableRooms = roomsData.filter(room => {
     if (!unavailableRooms.includes(room.number)) {
       return room
     }
   })
-  renderAvailableRooms(availableRooms)
+  if (availableRooms.length === 0) {
+    apologyMessage.classList.remove('hidden')
+    renderAvailableRooms(availableRooms)
+  } else {
+    apologyMessage.classList.add('hidden')
+    renderAvailableRooms(availableRooms)
+  }
   return availableRooms
 }
 
@@ -104,7 +138,13 @@ function filterByRoomTypes() {
       return room
     }
   })
-  renderAvailableRooms(filteredAvailableRooms)
+  if (filteredAvailableRooms.length === 0) {
+    apologyMessage.classList.remove('hidden')
+    renderAvailableRooms(filteredAvailableRooms)
+  } else {
+    apologyMessage.classList.add('hidden')
+    renderAvailableRooms(filteredAvailableRooms)
+  }
 }
 
 function renderAvailableRooms(availableRooms) {
@@ -113,32 +153,44 @@ function renderAvailableRooms(availableRooms) {
     let bidetTrue = ` and a luxurious bidet`
     let singleBed = ` ${room.numBeds} ${room.bedSize} bed`
     let manyBeds = ` ${room.numBeds} ${room.bedSize} beds`
-    availableRoomsDisplay.innerHTML += `<button class="book-button" name="${room.number}">Book now!</button>`
-    availableRoomsDisplay.innerHTML += `<p>
+    availableRoomsDisplay.innerHTML += `<button class="book-button" value="${room.number}">Book now!</button>`
+    availableRoomsDisplay.innerHTML += `<p class="room-type-and-cost">
     ${room.roomType} for $${room.costPerNight} per night
     <br>
     `
     if (room.numBeds === 1 && room.bidet) {
-      availableRoomsDisplay.innerHTML += `Amenities include: ${singleBed} ${bidetTrue}</p><br><br>`
+      availableRoomsDisplay.innerHTML += `<p class="amenities">Amenities include: ${singleBed} ${bidetTrue}<br><br><br>`
     } else if (room.numBeds === 1 && !room.bidet) {
-      availableRoomsDisplay.innerHTML += `Amenities include: ${singleBed}</p><br><br>`
+      availableRoomsDisplay.innerHTML += `<p class="amenities">Amenities include: ${singleBed}<br><br><br>`
     } else if (room.numBeds >= 2 && room.bidet) {
-      availableRoomsDisplay.innerHTML += `Amenities include: ${manyBeds} ${bidetTrue}</p><br><br>`
+      availableRoomsDisplay.innerHTML += `<p class="amenities">Amenities include: ${manyBeds} ${bidetTrue}<br><br><br>`
     } else {
-      availableRoomsDisplay.innerHTML += `Amenities include: ${manyBeds}</p><br><br>`
+      availableRoomsDisplay.innerHTML += `<p class="amenities">Amenities include: ${manyBeds}<br><br><br>`
     }
   })
+  const bookedButtons = document.querySelectorAll('.book-button')
+  bookedButtons.forEach(button => {
+    button.addEventListener('click', bookRoom)
+  })
   displayAvailableRoomsView()
+}
+
+function bookRoom(event) {
+  console.log(currentUser.totalSpending)
+  let bookedRoomNum = event.target.value
+  let newBooking = { userID: currentUser.id, date: formatDateForPost(dateForm.value), roomNumber: parseInt(bookedRoomNum) }
+  postData(newBooking)
+}
+
+function formatDateForPost(date) {
+  let formattedDate = date.split('-').join('/')
+  return formattedDate
 }
 
 function tidyUpDateForm() {
   dateForm.setAttribute('value', today)
   dateForm.setAttribute('min', today)
 }
-
-// function formatDate(date) {
-//   return (new Date(date).toISOString()).split('T')[0]
-// }
 
 function displayGuestPortalView() {
   hide(availableRoomsView)
@@ -148,8 +200,20 @@ function displayGuestPortalView() {
 
 function displayAvailableRoomsView() {
   hide(guestPortalView)
+  hide(bookedMessage)
   unhide(availableRoomsView)
+  unhide(availableRoomsDisplay)
   unhide(roomForm)
+  unhide(checkRoomAvailabilityButton)
+  unhide(availableRoomsTitle)
+}
+
+function displaySuccessfulBooking() {
+  hide(availableRoomsDisplay)
+  hide(roomForm)
+  hide(checkRoomAvailabilityButton)
+  hide(availableRoomsTitle)
+  unhide(bookedMessage)
 }
 
 function hide(element) {
