@@ -1,17 +1,19 @@
-class Booking {
-  constructor(booking) {
-    this.bookingId = booking.id
-    this.customerId = booking.userID
-    this.bookingDate = booking.date
-    this.roomNumber = booking.roomNumber
+class AllBookings {
+  constructor(bookings) {
+    this.bookings = bookings
+    // this.customerId = booking.userID
+    // this.bookingDate = booking.date
+    // this.roomNumber = booking.roomNumber
   }
-  getRoomCostPerNight = (allRooms) => {
-    allRooms.forEach(room => {
-      if (this.roomNumber === room.number) {
-        this.costPerNight = room.costPerNight
+  getUnavailableRooms = (date) => {
+    let roomsBookedOnSelectedDate = this.bookings.reduce((arr, booking) => {
+      if ( (new Date(booking.date).toISOString()).split('T')[0] === date && (!arr.includes(booking))) {
+        arr.push(booking.roomNumber)
       }
-    })
+      return arr
+    }, [])
+    return roomsBookedOnSelectedDate
   }
 }
 
-export default Booking
+export default AllBookings

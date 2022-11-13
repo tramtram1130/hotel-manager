@@ -5,7 +5,7 @@
 import './css/styles.css';
 import Customer from './classes/Customer.js'
 import Room from './classes/Room.js'
-import Booking from './classes/Booking.js'
+import AllBookings from './classes/Booking.js'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/bathhouse.png'
@@ -28,12 +28,14 @@ const totalSpending = document.querySelector('.spending-title')
 const guestPortalButton = document.querySelector('.guest-portal-button')
 const guestPortalView = document.querySelector('.guest-portal-container')
 const dateForm = document.querySelector('.date-form')
+const roomForm = document.querySelector('.room-form-container')
 const checkAvailabilityButton = document.querySelector('.check-availibility-button')
-
+const availableRoomsDisplay = document.querySelector('.available-rooms-body')
+const availableRoomsView = document.querySelector('.available-rooms-container')
 // EVENT LISTENERS
 
 window.addEventListener('load', instantiateData)
-guestPortalButton.addEventListener('click', displayGuestPortal)
+guestPortalButton.addEventListener('click', displayGuestPortalView)
 checkAvailabilityButton.addEventListener('click', getAvailableRooms)
 
 // API CALLS
@@ -52,7 +54,7 @@ function instantiateData() {
   ]).then(data => {
       customersData = data[0].customers
       roomsData = data[1].rooms
-      bookingsData = data[2].bookings
+      bookingsData = new AllBookings(data[2].bookings)
       renderUser()
     })
     .catch(err => console.log(err))
@@ -65,8 +67,8 @@ function renderUser() {
 }
 
 function populateDashboard() {
-  currentUser.getPastBookings(bookingsData)
-  currentUser.getFutureBookings(bookingsData)
+  currentUser.getPastBookings(bookingsData.bookings)
+  currentUser.getFutureBookings(bookingsData.bookings)
   currentUser.getTotalSpent(roomsData)
   let totalSpent = (Math.floor(currentUser.totalSpending * 100) / 100).toFixed(2)
 
@@ -82,13 +84,39 @@ function populateDashboard() {
 }
 
 function getAvailableRooms() {
-  console.log(dateForm.value)
-  let sample = (new Date(bookingsData[0].date).toISOString()).split('T')[0]
-  console.log(sample)
-  console.log(bookingsData)
-  if (dateForm.value > sample) {
-    console.log('Hallo')
-  }
+  let unavailableRooms = bookingsData.getUnavailableRooms(dateForm.value)
+  let availableRooms = roomsData.filter(room => {
+    if (!unavailableRooms.includes(room.number)) {
+      return room
+    }
+  })
+  renderAvailableRooms(availableRooms)
+  // console.log('Booked rooms on selected date: ', unavailableRooms)
+  // console.log('Available rooms on selected date: ', availableRooms)
+}
+
+function renderAvailableRooms(availableRooms) {
+  availableRoomsDisplay.innerHTML = ''
+  availableRooms.forEach(room => {
+    let bidetTrue = ` and a luxurious bidet`
+    let singleBed = ` ${room.numBeds} ${room.bedSize} bed`
+    let manyBeds = ` ${room.numBeds} ${room.bedSize} beds`
+    availableRoomsDisplay.innerHTML += `<button class="book-button" name="${room.number}">Book now!</button>`
+    availableRoomsDisplay.innerHTML += `<p>
+    ${room.roomType} for $${room.costPerNight} per night
+    <br>
+    `
+    if (room.numBeds === 1 && room.bidet) {
+      availableRoomsDisplay.innerHTML += `Amenities include: ${singleBed} ${bidetTrue}</p><br><br>`
+    } else if (room.numBeds === 1 && !room.bidet) {
+      availableRoomsDisplay.innerHTML += `Amenities include: ${singleBed}</p><br><br>`
+    } else if (room.numBeds >= 2 && room.bidet) {
+      availableRoomsDisplay.innerHTML += `Amenities include: ${manyBeds} ${bidetTrue}</p><br><br>`
+    } else {
+      availableRoomsDisplay.innerHTML += `Amenities include: ${manyBeds}</p><br><br>`
+    }
+  })
+  displayAvailableRoomsView()
 }
 
 function tidyUpDateForm() {
@@ -96,8 +124,20 @@ function tidyUpDateForm() {
   dateForm.setAttribute('min', today)
 }
 
-function displayGuestPortal() {
+function formatDate(date) {
+  return (new Date(date).toISOString()).split('T')[0]
+}
+
+function displayGuestPortalView() {
+  hide(availableRoomsView)
+  hide(roomForm)
   unhide(guestPortalView)
+}
+
+function displayAvailableRoomsView() {
+  hide(guestPortalView)
+  unhide(availableRoomsView)
+  unhide(roomForm)
 }
 
 function hide(element) {

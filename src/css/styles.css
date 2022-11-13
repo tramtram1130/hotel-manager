@@ -50,9 +50,11 @@ body {
   flex-direction: column;
 }
 
-.date-form, .room-form, 
+.date-form, 
+.room-form, 
 .check-availibility-button, 
-.guest-portal-button {
+.guest-portal-button,
+.book-button {
   padding: 10px;
   margin: 10px 0px 10px 0px;
   width: 14vw;
@@ -62,14 +64,16 @@ body {
 }
 
 .check-availibility-button, 
-.guest-portal-button {
+.guest-portal-button,
+.book-button {
   background-color: rgb(156, 156, 156);
   color: white;
   transition-duration: 0.4s;
 }
 
 .check-availibility-button:hover, 
-.guest-portal-button:hover {
+.guest-portal-button:hover,
+.book-button:hover {
   background-color: #626262;
   color: white;
 }
@@ -88,19 +92,6 @@ body {
   /* border: 2px solid black; */
 }
 
-.spending-container-styling {
-  display: flex;
-  justify-content: center;
-}
-
-.spending-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 20vh;
-  /* border: 2px solid black; */
-}
 
 .past-bookings-container, 
 .future-bookings-container {
@@ -111,18 +102,51 @@ body {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
-.spending-container {
-  background-color: white;
-  width: 45vw;
-  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-}
-
 .past-bookings-title, 
 .past-bookings-body, 
 .future-bookings-title, 
-.future-bookings-body {
+.future-bookings-body,
+.available-rooms-title,
+.available-rooms-body {
   margin: 20px 40px 20px 40px;
 }
+
+.available-rooms-title {
+  text-align: center;
+}
+
+.spending-container-styling {
+  display: flex;
+  justify-content: center;
+}
+
+.spending-container {
+  position: relative;
+  width: 45vw;
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  /* margin-bottom: 20vh; */
+  /* border: 2px solid black; */
+}
+
+.available-rooms-styling {
+  display: flex;
+  justify-content: center;
+}
+
+.available-rooms-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  height: fit-content;
+  width: 75vw;
+  margin-top: 15vh;
+  overflow-y:auto;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
 
 .hidden {
   display: none;
