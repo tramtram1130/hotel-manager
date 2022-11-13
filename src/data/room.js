@@ -75,4 +75,5 @@ const roomsData = [
 
 module.exports = {
   roomsData 
-};
+}
+

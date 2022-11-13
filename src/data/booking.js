@@ -12,6 +12,12 @@ const bookingsData = [
     roomNumber: 10
   },
   {
+    id: "5fabcd4b7k74hl3n4",
+    userID: 25,
+    date: "2021/01/25",
+    roomNumber: 10
+  },
+  {
     id: "5fwrgu4i7k55hl790",
     userID: 25,
     date: "2023/11/16",
@@ -48,9 +54,15 @@ const bookingsData = [
     roomNumber: 5
   },
   {
+    id: "5fwrgu4idf89hl6ne",
+    userID: 7,
+    date: "2024/12/22",
+    roomNumber: 22
+  },
+  {
     id: "5fwrgu4i7k55hl7f7",
     userID: 42,
-    date: "2022/02/11",
+    date: "2022/11/10",
     roomNumber: 2
   },
   {
@@ -60,3 +72,7 @@ const bookingsData = [
     roomNumber: 6
   }
 ]
+
+module.exports = {
+  bookingsData
+}

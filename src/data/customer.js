@@ -12,3 +12,7 @@ const customersData = [
     name: "Freda Bednar"
   }
 ]
+
+module.exports = {
+  customersData
+}
