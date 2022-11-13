@@ -28,15 +28,18 @@ const totalSpending = document.querySelector('.spending-title')
 const guestPortalButton = document.querySelector('.guest-portal-button')
 const guestPortalView = document.querySelector('.guest-portal-container')
 const dateForm = document.querySelector('.date-form')
-const roomForm = document.querySelector('.room-form-container')
-const checkAvailabilityButton = document.querySelector('.check-availibility-button')
+const roomForm = document.querySelector('.room-form')
+const checkDateAvailabilityButton = document.querySelector('.check-date-availability-button')
+const checkRoomAvailabilityButton = document.querySelector('.check-room-availability-button')
 const availableRoomsDisplay = document.querySelector('.available-rooms-body')
 const availableRoomsView = document.querySelector('.available-rooms-container')
+
 // EVENT LISTENERS
 
 window.addEventListener('load', instantiateData)
 guestPortalButton.addEventListener('click', displayGuestPortalView)
-checkAvailabilityButton.addEventListener('click', getAvailableRooms)
+checkDateAvailabilityButton.addEventListener('click', getAvailableRooms)
+checkRoomAvailabilityButton.addEventListener('click', filterByRoomTypes)
 
 // API CALLS
 
@@ -91,8 +94,17 @@ function getAvailableRooms() {
     }
   })
   renderAvailableRooms(availableRooms)
-  // console.log('Booked rooms on selected date: ', unavailableRooms)
-  // console.log('Available rooms on selected date: ', availableRooms)
+  return availableRooms
+}
+
+function filterByRoomTypes() {
+  let availableRooms = getAvailableRooms()
+  let filteredAvailableRooms = availableRooms.filter(room => {
+    if (room.roomType === roomForm.value) {
+      return room
+    }
+  })
+  renderAvailableRooms(filteredAvailableRooms)
 }
 
 function renderAvailableRooms(availableRooms) {
@@ -124,9 +136,9 @@ function tidyUpDateForm() {
   dateForm.setAttribute('min', today)
 }
 
-function formatDate(date) {
-  return (new Date(date).toISOString()).split('T')[0]
-}
+// function formatDate(date) {
+//   return (new Date(date).toISOString()).split('T')[0]
+// }
 
 function displayGuestPortalView() {
   hide(availableRoomsView)
