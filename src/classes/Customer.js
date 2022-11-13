@@ -32,6 +32,7 @@ class Customer {
         this.totalSpending += room.costPerNight
       }
     })
+    return this.totalSpending
   }
 }
 
