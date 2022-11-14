@@ -25,12 +25,15 @@ class Customer {
     })
   }
   getTotalSpent = (allRooms) => {
+    this.totalSpending = 0
     let bookedRooms = this.pastBookings.concat(this.futureBookings)
     let bookedRoomNumbers = bookedRooms.map(room => room.roomNumber)
-    allRooms.forEach(room => {
-      if (bookedRoomNumbers.includes(room.number)) {
-        this.totalSpending += room.costPerNight
-      }
+    bookedRoomNumbers.forEach(bookedRoom => {
+      allRooms.forEach(room => {
+        if (bookedRoom === room.number) {
+         this.totalSpending += room.costPerNight
+        }
+      })
     })
     return this.totalSpending
   }
