@@ -6,7 +6,6 @@ import './css/styles.css';
 import Customer from './classes/Customer.js'
 import Room from './classes/Room.js'
 import AllBookings from './classes/Booking.js'
-import { allBookedData } from './data/allRoomsBooked';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/bathhouse.png'
@@ -18,7 +17,6 @@ let roomsData
 let bookingsData
 let currentUser
 let today = ((new Date()).toISOString()).split('T')[0]
-let allBookedTestData = new AllBookings(allBookedData)
 
 // QUERY SELECTORS
 
@@ -93,29 +91,19 @@ function populateDashboard() {
 
   pastBookings.innerHTML = ''
   currentUser.pastBookings.forEach(booking => {
-    pastBookings.innerHTML += `<p>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</p><br>`
+    pastBookings.innerHTML += `<li class='listed-reservations'>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</li><br>`
   })
   futureBookings.innerHTML = ''
   currentUser.futureBookings.forEach(booking => {
-    futureBookings.innerHTML += `<p>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</p><br>`
+    futureBookings.innerHTML += `<li class='listed-reservations'>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</li><br>`
   })
   totalSpending.innerHTML = `Total Spent: $${totalSpent}`
 }
 
 function getAvailableRooms() {
   let unavailableRooms = bookingsData.getUnavailableRooms(dateForm.value)
-  let availableRooms = roomsData.filter(room => {
-    if (!unavailableRooms.includes(room.number)) {
-      return room
-    }
-  })
-  if (availableRooms.length === 0) {
-    apologyMessage.classList.remove('hidden')
-    renderAvailableRooms(availableRooms)
-  } else {
-    apologyMessage.classList.add('hidden')
-    renderAvailableRooms(availableRooms)
-  }
+  let availableRooms = bookingsData.getAvailableRooms(roomsData, unavailableRooms)
+  displayApologyMessage(availableRooms)
   return availableRooms
 }
 
@@ -126,13 +114,7 @@ function filterByRoomTypes() {
       return room
     }
   })
-  if (filteredAvailableRooms.length === 0) {
-    apologyMessage.classList.remove('hidden')
-    renderAvailableRooms(filteredAvailableRooms)
-  } else {
-    apologyMessage.classList.add('hidden')
-    renderAvailableRooms(filteredAvailableRooms)
-  }
+  displayApologyMessage(filteredAvailableRooms)
 }
 
 function renderAvailableRooms(availableRooms) {
@@ -170,8 +152,17 @@ function bookRoom(event) {
 }
 
 function tidyUpDateForm() {
-  dateForm.setAttribute('value', today)
-  dateForm.setAttribute('min', today)
+  dateForm.setAttribute('value', today), dateForm.setAttribute('min', today)
+}
+
+function displayApologyMessage(list) {
+  if (list.length === 0) {
+    apologyMessage.classList.remove('hidden')
+    renderAvailableRooms(list)
+  } else {
+    apologyMessage.classList.add('hidden')
+    renderAvailableRooms(list)
+  }
 }
 
 function displayGuestPortalView() {

@@ -1,9 +1,6 @@
 class AllBookings {
   constructor(bookings) {
     this.bookings = bookings
-    // this.customerId = booking.userID
-    // this.bookingDate = booking.date
-    // this.roomNumber = booking.roomNumber
   }
   getUnavailableRooms = (date) => {
     let roomsBookedOnSelectedDate = this.bookings.reduce((arr, booking) => {
@@ -13,6 +10,14 @@ class AllBookings {
       return arr
     }, [])
     return roomsBookedOnSelectedDate
+  }
+  getAvailableRooms = (allRooms, unavailableRooms) => {
+    let availableRooms = allRooms.filter(room => {
+      if (!unavailableRooms.includes(room.number)) {
+        return room
+      }
+    })
+    return availableRooms
   }
 }
 

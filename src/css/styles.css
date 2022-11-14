@@ -23,7 +23,7 @@ body {
   font-size: 4vw;
   color: white;
   font-family: 'Cinzel';
-  text-shadow: 2px 2px 3px #3d3d3d;
+  text-shadow: 4px 4px 10px #3d3d3d;
   margin-top: 3.5vw;
 }
 
@@ -180,7 +180,8 @@ body {
   margin-top: 20px;
 }
 
-p {
+p,
+li {
   font-family: 'Noto Sans Mende Kikakui', sans-serif;
   margin-top: -1px;
   margin-bottom: -1px;
