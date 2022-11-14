@@ -89,7 +89,6 @@ function renderUser() {
 function populateDashboard() {
   currentUser.getPastBookings(bookingsData.bookings)
   currentUser.getFutureBookings(bookingsData.bookings)
-  currentUser.getTotalSpent(roomsData)
   let totalSpent = (Math.floor((currentUser.getTotalSpent(roomsData)) * 100) / 100).toFixed(2)
 
   pastBookings.innerHTML = ''
@@ -105,7 +104,6 @@ function populateDashboard() {
 
 function getAvailableRooms() {
   let unavailableRooms = bookingsData.getUnavailableRooms(dateForm.value)
-  console.log(unavailableRooms)
   let availableRooms = roomsData.filter(room => {
     if (!unavailableRooms.includes(room.number)) {
       return room
@@ -166,9 +164,8 @@ function renderAvailableRooms(availableRooms) {
 }
 
 function bookRoom(event) {
-  console.log(currentUser.totalSpending)
   let bookedRoomNum = event.target.value
-  let newBooking = { userID: currentUser.id, date: formatDateForPost(dateForm.value), roomNumber: parseInt(bookedRoomNum) }
+  let newBooking = { userID: currentUser.id, date: (dateForm.value).split('-').join('/'), roomNumber: parseInt(bookedRoomNum) }
   postData(newBooking)
 }
 
