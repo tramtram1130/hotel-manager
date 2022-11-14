@@ -66,16 +66,6 @@ function instantiateData() {
     .catch(err => console.log(err))
 }
 
-// function instantiateUpdatedData() {
-//   Promise.all([
-//     gatherData('http://localhost:3001/api/v1/customers'),
-//     gatherData('http://localhost:3001/api/v1/rooms'),
-//     gatherData('http://localhost:3001/api/v1/bookings')
-//   ]).then(data => {
-    
-//   })
-// }
-
 function postData(newBooking) {
   fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
@@ -104,11 +94,11 @@ function populateDashboard() {
 
   pastBookings.innerHTML = ''
   currentUser.pastBookings.forEach(booking => {
-    pastBookings.innerHTML += `Date of stay: ${booking.date} Room number: ${booking.roomNumber}<br>`
+    pastBookings.innerHTML += `<li class='listed-reservations'>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</li><br>`
   })
   futureBookings.innerHTML = ''
   currentUser.futureBookings.forEach(booking => {
-    futureBookings.innerHTML += `Date of stay: ${booking.date} Room number: ${booking.roomNumber}<br>`
+    futureBookings.innerHTML += `<li class='listed-reservations'>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</li><br>`
   })
   totalSpending.innerHTML = `Total Spent: $${totalSpent}`
 }
@@ -180,11 +170,6 @@ function bookRoom(event) {
   let bookedRoomNum = event.target.value
   let newBooking = { userID: currentUser.id, date: formatDateForPost(dateForm.value), roomNumber: parseInt(bookedRoomNum) }
   postData(newBooking)
-}
-
-function formatDateForPost(date) {
-  let formattedDate = date.split('-').join('/')
-  return formattedDate
 }
 
 function tidyUpDateForm() {
