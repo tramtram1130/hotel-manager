@@ -62,7 +62,7 @@ const bookingsData = [
   {
     id: "5fwrgu4i7k55hl7f7",
     userID: 42,
-    date: "2022/11/10",
+    date: "2022/02/14",
     roomNumber: 2
   },
   {
