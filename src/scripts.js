@@ -90,6 +90,7 @@ function logIn(event) {
   let lastTwoChar = guestUserNameInput.slice(8)
   let filteredCustomer = customersData.filter(customer => customer.id === parseInt(lastTwoChar))
   if (firstEightChar === 'customer' && 
+    !(/\s/.test(guestUserNameInput)) &&
     parseInt(lastTwoChar) < 51 &&
     parseInt(lastTwoChar) != 0 &&
     guestPasswordInput === 'overlook2021') {
