@@ -4,7 +4,6 @@
 
 body {
   background-color: white;
-  /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
 }
 
 .body-container {
@@ -16,9 +15,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: rgb(172, 168, 200);
-  /* border: 5px solid rgb(83, 83, 83); */
   height: 100vh;
-  width: 100%;
 }
 
 .login-styling {
@@ -28,15 +25,9 @@ body {
   height: 70%;
 }
 
-.login-form-container {
-  background-color: white;
-  height: 50%;
-  width: 50%;
-}
-
+.login-form-container,
 .login-art-container {
   background-color: white;
-  /* border: 5px solid blue; */
   height: 70vh;
   width: 50%;
 }
@@ -47,37 +38,32 @@ body {
   object-fit: cover;
 }
 
-.login-form-container {
-  /* border: 5px solid red; */
-  height: 100%;
-  width: 50%;
-}
-
 #username,
 #password {
-  padding: 10px;
   margin: 10px 0px 10px 0px;
   width: 19.5vw;
-  border: 3px gray;
-  border-radius: 1px;
-  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: solid;
+  background-color: transparent;
 }
 
 .welcome-back-title {
+  margin-bottom: -2px;
   font-size: 5vh;
-  margin-left: 2vw;
 }
 
+.welcome-back-title,
 .please-enter-details-title,
 .login-label,
 #username,
 #password,
 .login-button {
-  margin-left: 2vw;
+  margin-left: 3vw;
 }
 
 .login-button {
-  width: 19.5vw;
   height: 4vh;
   border: 0;
   border-radius: 3px;
@@ -96,11 +82,11 @@ body {
 
 .resort-name {
   position: absolute;
+  margin-top: 3.5vw;
   font-size: 4vw;
   color: white;
   font-family: 'Cinzel';
   text-shadow: 4px 4px 10px #3d3d3d;
-  margin-top: 3.5vw;
 }
 
 .booking-container {
@@ -119,8 +105,7 @@ body {
   justify-content: space-evenly;
 }
 
-.date-form-container, 
-.button-container {
+.date-form-container {
   display: flex;
   flex-direction: column;
 }
@@ -160,6 +145,7 @@ body {
   transition-duration: 0.4s;
 }
 
+.login-button:hover,
 .check-date-availability-button:hover, 
 .check-room-availability-button:hover,
 .guest-portal-button:hover,
@@ -179,7 +165,6 @@ body {
   justify-content: space-evenly;
   margin-top: 15vh;
   padding-bottom: 5vh;
-  /* border: 2px solid black; */
 }
 
 
@@ -202,11 +187,13 @@ body {
   margin: 20px 40px 20px 40px;
 }
 
-.available-rooms-title {
+.available-rooms-title,
+.login-error-message {
   text-align: center;
 }
 
-.spending-container-styling {
+.spending-container-styling,
+.available-rooms-styling {
   display: flex;
   justify-content: center;
 }
@@ -218,12 +205,6 @@ body {
   justify-content: space-evenly;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   margin-bottom: 10vh;
-  /* border: 2px solid black; */
-}
-
-.available-rooms-styling {
-  display: flex;
-  justify-content: center;
 }
 
 .available-rooms-container {
@@ -235,21 +216,8 @@ body {
   width: 55vw;
   margin-top: 15vh;
   margin-bottom: 10vh;
-  /* overflow-y:auto; */
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
-
-/* .available-rooms-title,
-.apology-title,
-.past-bookings-title,
-.future-bookings-title,
-.spending-title,
-.booked-message-title,
-.welcome-back-title,
-.please-enter-details-title,
-.login-label {
-  font-family: 'Noto Sans Mende Kikakui', sans-serif;
-} */
 
 .apology-title,
 .booked-message-title {
@@ -263,7 +231,6 @@ body {
 
 p,
 li {
-  font-family: 'Noto Sans Mende Kikakui', sans-serif;
   margin-top: -1px;
   margin-bottom: -1px;
 }

@@ -21,25 +21,25 @@ const passwordField = document.querySelector('#password')
 const loginButton = document.querySelector('.login-button')
 const loginErrorMessage = document.querySelector('.login-error-message')
 const homeView = document.querySelector('.greeting-container')
+const guestPortalView = document.querySelector('.guest-portal-container')
+const guestPortalButton = document.querySelector('.guest-portal-button')
 const pastBookings = document.querySelector('.past-bookings-body') 
 const futureBookings = document.querySelector('.future-bookings-body')
 const totalSpending = document.querySelector('.spending-title')
-const guestPortalButton = document.querySelector('.guest-portal-button')
-const guestPortalView = document.querySelector('.guest-portal-container')
 const dateForm = document.querySelector('.date-form')
 const roomForm = document.querySelector('.room-form')
-const apologyMessage = document.querySelector('.apology-title')
-const bookedMessage = document.querySelector('.booked-message-title')
 const checkDateAvailabilityButton = document.querySelector('.check-date-availability-button')
 const checkRoomAvailabilityButton = document.querySelector('.check-room-availability-button')
+const apologyMessage = document.querySelector('.apology-title')
+const bookedMessage = document.querySelector('.booked-message-title')
+const availableRoomsView = document.querySelector('.available-rooms-container')
 const availableRoomsTitle = document.querySelector('.available-rooms-title')
 const availableRoomsDisplay = document.querySelector('.available-rooms-body')
-const availableRoomsView = document.querySelector('.available-rooms-container')
 
 // EVENT LISTENERS
 
-loginButton.addEventListener('click', logIn)
 window.addEventListener('load', () => instantiateData('load'))
+loginButton.addEventListener('click', logIn)
 guestPortalButton.addEventListener('click', displayGuestPortalView)
 checkDateAvailabilityButton.addEventListener('click', getAvailableRooms)
 checkRoomAvailabilityButton.addEventListener('click', filterByRoomTypes)
@@ -94,8 +94,7 @@ function logIn(event) {
     parseInt(lastTwoChar) != 0 &&
     guestPasswordInput === 'overlook2021') {
       renderUser(filteredCustomer)
-      hide(loginView)
-      unhide(homeView)
+      displayHomeView()
     } else {
       unhide(loginErrorMessage)
     }
@@ -186,6 +185,11 @@ function displayApologyMessage(list) {
     apologyMessage.classList.add('hidden')
     renderAvailableRooms(list)
   }
+}
+
+function displayHomeView() {
+  hide(loginView)
+  unhide(homeView)
 }
 
 function displayGuestPortalView() {
