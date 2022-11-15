@@ -1,3 +1,7 @@
+* {
+  font-family: 'Noto Sans Mende Kikakui', sans-serif;
+}
+
 body {
   background-color: white;
   /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
@@ -6,6 +10,78 @@ body {
 .body-container {
   margin: 0;
   height: fit-content;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(172, 168, 200);
+  /* border: 5px solid rgb(83, 83, 83); */
+  height: 100vh;
+  width: 100%;
+}
+
+.login-styling {
+  display: flex;
+  align-self: center;
+  width: 60%;
+  height: 70%;
+}
+
+.login-form-container {
+  background-color: white;
+  height: 50%;
+  width: 50%;
+}
+
+.login-art-container {
+  background-color: white;
+  /* border: 5px solid blue; */
+  height: 70vh;
+  width: 50%;
+}
+
+.no-face-image {
+  height: 100%; 
+  width: 100%; 
+  object-fit: cover;
+}
+
+.login-form-container {
+  /* border: 5px solid red; */
+  height: 100%;
+  width: 50%;
+}
+
+#username,
+#password {
+  padding: 10px;
+  margin: 10px 0px 10px 0px;
+  width: 19.5vw;
+  border: 3px gray;
+  border-radius: 1px;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.welcome-back-title {
+  font-size: 5vh;
+  margin-left: 2vw;
+}
+
+.please-enter-details-title,
+.login-label,
+#username,
+#password,
+.login-button {
+  margin-left: 2vw;
+}
+
+.login-button {
+  width: 19.5vw;
+  height: 4vh;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
 }
 
 .greeting-container {
@@ -69,10 +145,12 @@ body {
   box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
 }
 
+.login-button,
 .book-button {
   width: 8vw;
 }
 
+.login-button,
 .check-date-availability-button, 
 .check-room-availability-button,
 .guest-portal-button,
@@ -161,14 +239,17 @@ body {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
-.available-rooms-title,
+/* .available-rooms-title,
 .apology-title,
 .past-bookings-title,
 .future-bookings-title,
 .spending-title,
-.booked-message-title {
+.booked-message-title,
+.welcome-back-title,
+.please-enter-details-title,
+.login-label {
   font-family: 'Noto Sans Mende Kikakui', sans-serif;
-}
+} */
 
 .apology-title,
 .booked-message-title {

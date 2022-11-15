@@ -1,14 +1,9 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 import Customer from './classes/Customer.js'
 import Room from './classes/Room.js'
 import AllBookings from './classes/Booking.js'
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/bathhouse.png'
+import './images/no-face.gif'
 
 // GLOBAL VARIABLES
 
@@ -20,6 +15,12 @@ let today = ((new Date()).toISOString()).split('T')[0]
 
 // QUERY SELECTORS
 
+const loginView = document.querySelector('.login-container')
+const usernameField = document.querySelector('#username')
+const passwordField = document.querySelector('#password')
+const loginButton = document.querySelector('.login-button')
+const loginErrorMessage = document.querySelector('.login-error-message')
+const homeView = document.querySelector('.greeting-container')
 const pastBookings = document.querySelector('.past-bookings-body') 
 const futureBookings = document.querySelector('.future-bookings-body')
 const totalSpending = document.querySelector('.spending-title')
@@ -37,7 +38,8 @@ const availableRoomsView = document.querySelector('.available-rooms-container')
 
 // EVENT LISTENERS
 
-window.addEventListener('load', instantiateData)
+loginButton.addEventListener('click', logIn)
+window.addEventListener('load', () => instantiateData('load'))
 guestPortalButton.addEventListener('click', displayGuestPortalView)
 checkDateAvailabilityButton.addEventListener('click', getAvailableRooms)
 checkRoomAvailabilityButton.addEventListener('click', filterByRoomTypes)
@@ -50,7 +52,7 @@ const gatherData = (url) => {
     .catch(err => console.log(err))
 }
 
-function instantiateData() {
+function instantiateData(condition) {
   Promise.all([
     gatherData('http://localhost:3001/api/v1/customers'),
     gatherData('http://localhost:3001/api/v1/rooms'),
@@ -59,7 +61,9 @@ function instantiateData() {
       customersData = data[0].customers
       roomsData = data[1].rooms
       bookingsData = new AllBookings(data[2].bookings)
-      renderUser()
+      if (condition === 'update') {
+        populateDashboard(bookingsData)
+      }
     })
     .catch(err => console.log(err))
 }
@@ -73,21 +77,39 @@ function postData(newBooking) {
       }
   })
   .then(response => response.json())
-  .then(response => instantiateData())
-  .then(response => displaySuccessfulBooking())
+  .then(() => instantiateData('update'))
+  .then(() => displaySuccessfulBooking())
   .catch(err => console.log(err))
 }
 
-function renderUser() {
-  currentUser = new Customer(customersData[1])
-  populateDashboard()
+function logIn(event) {
+  event.preventDefault()
+  let guestUserNameInput = usernameField.value
+  let guestPasswordInput = passwordField.value
+  let firstEightChar = guestUserNameInput.slice(0, 8)
+  let lastTwoChar = guestUserNameInput.slice(8)
+  let filteredCustomer = customersData.filter(customer => customer.id === parseInt(lastTwoChar))
+  if (firstEightChar === 'customer' && 
+    parseInt(lastTwoChar) < 51 &&
+    parseInt(lastTwoChar) != 0 &&
+    guestPasswordInput === 'overlook2021') {
+      renderUser(filteredCustomer)
+      hide(loginView)
+      unhide(homeView)
+    } else {
+      unhide(loginErrorMessage)
+    }
+}
+
+function renderUser(guest) {
+  currentUser = new Customer(guest[0])
+  populateDashboard(bookingsData)
   tidyUpDateForm()
 }
 
-function populateDashboard() {
+function populateDashboard(bookingsData) {
   currentUser.getPastBookings(bookingsData.bookings)
   currentUser.getFutureBookings(bookingsData.bookings)
-  currentUser.getTotalSpent(roomsData)
   let totalSpent = (Math.floor((currentUser.getTotalSpent(roomsData)) * 100) / 100).toFixed(2)
 
   pastBookings.innerHTML = ''
@@ -148,7 +170,7 @@ function renderAvailableRooms(availableRooms) {
 
 function bookRoom(event) {
   let bookedRoomNum = event.target.value
-  let newBooking = { userID: currentUser.id, date: formatDateForPost(dateForm.value), roomNumber: parseInt(bookedRoomNum) }
+  let newBooking = { userID: currentUser.id, date: (dateForm.value).split('-').join('/'), roomNumber: parseInt(bookedRoomNum) }
   postData(newBooking)
 }
 
@@ -197,5 +219,3 @@ function hide(element) {
 function unhide(element) {
   element.classList.remove('hidden')
 }
-
-console.log('This is the JavaScript entry file - your code begins here.')
