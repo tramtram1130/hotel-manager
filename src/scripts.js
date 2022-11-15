@@ -93,11 +93,11 @@ function populateDashboard() {
 
   pastBookings.innerHTML = ''
   currentUser.pastBookings.forEach(booking => {
-    pastBookings.innerHTML += `<li class='listed-reservations'>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</li><br>`
+    pastBookings.innerHTML += `<li class='listed-reservations'>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</li>`
   })
   futureBookings.innerHTML = ''
   currentUser.futureBookings.forEach(booking => {
-    futureBookings.innerHTML += `<li class='listed-reservations'>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</li><br>`
+    futureBookings.innerHTML += `<li class='listed-reservations'>Date of stay: ${booking.date} Room number: ${booking.roomNumber}</li>`
   })
   totalSpending.innerHTML = `Total Spent: $${totalSpent}`
 }
