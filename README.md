@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <!-- HEADER -->
-<h1 align="center">Hotel Manager</h1>
+<h1 align="center">Yubaba's Bath House & Resort</h1>
 
 <h3 align="center">A Hotel Booking Site</h3>
 
