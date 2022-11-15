@@ -9,9 +9,28 @@
 </head>
 <body class="body-container">
   <main>
-    <section class="greeting-container">
+    <section class="login-container">
+      <div class="login-styling">
+        <section class="login-form-container">
+          <h1 class="welcome-back-title">Welcome Back!</h1>
+          <h4 class="please-enter-details-title">Please enter your details.</h4>
+          <form>
+            <label for="username" class="login-label">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password" class="login-label">Password:</label><br>
+            <input type="text" id="password" name="password"><br><br>
+          </form>
+          <input type="submit" class="login-button" value="Submit">
+          <h4 class="login-error-message hidden">Log in credentials does not match.</h4>
+        </section>
+        <section class="login-art-container">
+          <img class="no-face-image" src="./images/no-face.gif" alt="A neutral spirit with a handful of gold offerings">
+        </section>
+      </div>
+    </section>
+    <section class="greeting-container hidden">
       <h1 class="resort-name">Yubaba's Bath House & Resort</h1>
-      <img class="resort-image" src="./images/bathhouse.png" alt="turing logo">
+      <img class="resort-image" src="./images/bathhouse.png" alt="A towering bath house/resort">
       <section class="booking-container">
         <div class="all-forms-container">
           <section class="date-form-container">
@@ -65,71 +84,6 @@
       </section>
     </div>
   </main>
-  <!-- <section class="greeting-container">
-    <h1 class="resort-name">Yubaba's Bath House & Resort</h1>
-    <img class="resort-image" src="./images/bathhouse.png" alt="turing logo">
-    <section class="booking-container">
-      <div class="all-forms-container">
-        <section class="date-form-container">
-          <input aria-label="date picker" type="date" class="date-form" name="trip-start" value="2022-11-12" max="2023-12-31">
-        </section>
-        <section class="button-container">
-          <button class="check-date-availability-button" type="button">Check Date Availability</button>
-        </section>
-        <section class="button-container">
-          <button class="guest-portal-button" type="button">Guest Portal</button>
-        </section>
-     </div>
-    </section>
-  </section>
-  <section class="guest-portal-container hidden">
-    <section class="all-bookings-container">
-      <section class="past-bookings-container">
-        <h2 tabindex="0" class="past-bookings-title">Past Reservations</h2>
-        <section tabindex="0" class="past-bookings-body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna 
-          aliqua. Diam sit amet nisl suscipit adipiscing bibendum 
-          est ultricies integer.
-        </section>
-      </section>
-      <section class="future-bookings-container">
-        <h2 tabindex="0" class="future-bookings-title">Future Reservations</h2>
-        <section tabindex="0" class="future-bookings-body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-          sed do eiusmod tempor incididunt ut labore et dolore magna 
-          aliqua. Diam sit amet nisl suscipit adipiscing bibendum 
-          est ultricies integer.
-        </section>
-      </section>
-    </section>
-    <div class="spending-container-styling">
-      <section class="spending-container">
-        <h3 tabindex="0" class="spending-title">Total Spent: $$$</h3>
-      </section>
-    </div>
-  </section>
-  <div class="available-rooms-styling">
-    <section class="available-rooms-container hidden">
-      <h3 class="available-rooms-title">Available Rooms</h3>
-      <h3 class="booked-message-title hidden">Booked! Your new reservation is reflected in your account.</h3>
-      <h3 class="apology-title hidden">(There are no available rooms based on the chosen criteria)</h3>
-      <section class="room-form-container">
-        <select aria-label="room picker" class="room-form" name="rooms-list" form="room-form">
-          <option value="single room">Single Room</option>
-          <option value="junior suite">Junior Suite</option>
-          <option value="suite">Suite</option>
-          <option value="residential suite">Residential Suite</option>
-        </select>
-        <section class="button-container">
-          <button class="check-room-availability-button" type="button">Check Room Availability</button>
-        </section>
-      </section>
-      <section class="available-rooms-body"></section>
-    </section>
-  </div> -->
-  
-
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 </body>

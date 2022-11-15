@@ -3,16 +3,19 @@ import AllBookings from '../src/classes/Booking.js'
 const roomsData = require('../src/data/room.js')
 const customersData = require('../src/data/customer.js')
 const bookingsData = require('../src/data/booking.js')
+const allBookedData = require('../src/data/allRoomsBooked')
 
 describe('AllBookings', () => {
   
   let allBookingsData = bookingsData.bookingsData
+  let allBookedRoomsData = allBookedData.allBookedData
   let allRooms = roomsData.roomsData
   let allCustomers = customersData.customersData
-  let bookings1
+  let bookings1, bookings2
 
   beforeEach(() => {
     bookings1 = new AllBookings(allBookingsData)
+    bookings2 = new AllBookings(allBookedRoomsData)
   })
 
   it('Should be a function', () => {
@@ -23,37 +26,94 @@ describe('AllBookings', () => {
     expect(bookings1.bookings).to.be.an('array')
   })
 
-  it('Should return booked rooms on specified date with method getUnavailableRooms()', () => {
-    expect(bookings1.getUnavailableRooms('2022-02-14')).to.deep.equal([6])
+  it('Should return an array of unavailable room numbers on a specified date using method getUnavailableRooms()', () => {
+    expect(bookings1.getUnavailableRooms('2022-02-14')).to.deep.equal([2, 6])
+  })
+
+  it('Should return an empty array of unavailable rooms on a specified date with no rooms booked using method getUnavailableRooms()', () => {
     expect(bookings1.getUnavailableRooms('2022-02-15')).to.deep.equal([])
   })
 
-  // it('Should store a booking ID', () => {
-  //   expect(booking1.bookingId).to.equal("5fwrgu4i7k55hl6ta")
-  //   expect(booking2.bookingId).to.equal("5fwrgu4i7k55hl6xq")
-  // })
+  it('Should return an array of available rooms on specified date with method getAvailableRooms() after getting unavailable rooms', () => {
+    let unavailableRooms = bookings1.getUnavailableRooms('2022-02-15')
+    expect(bookings1.getAvailableRooms(allRooms, unavailableRooms)).to.deep.equal([
+      {
+        number: 2,
+        roomType: 'suite',
+        bidet: false,
+        bedSize: 'full',
+        numBeds: 2,
+        costPerNight: 477.38
+      },
+      {
+        number: 5,
+        roomType: 'single room',
+        bidet: true,
+        bedSize: 'queen',
+        numBeds: 2,
+        costPerNight: 340.17
+      },
+      {
+        number: 6,
+        roomType: 'junior suite',
+        bidet: true,
+        bedSize: 'queen',
+        numBeds: 1,
+        costPerNight: 397.02
+      },
+      {
+        number: 8,
+        roomType: 'junior suite',
+        bidet: false,
+        bedSize: 'king',
+        numBeds: 1,
+        costPerNight: 261.26
+      },
+      {
+        number: 9,
+        roomType: 'single room',
+        bidet: true,
+        bedSize: 'queen',
+        numBeds: 1,
+        costPerNight: 200.39
+      },
+      {
+        number: 10,
+        roomType: 'suite',
+        bidet: false,
+        bedSize: 'twin',
+        numBeds: 1,
+        costPerNight: 497.64
+      },
+      {
+        number: 11,
+        roomType: 'single room',
+        bidet: true,
+        bedSize: 'twin',
+        numBeds: 2,
+        costPerNight: 207.24
+      },
+      {
+        number: 20,
+        roomType: 'residential suite',
+        bidet: false,
+        bedSize: 'queen',
+        numBeds: 1,
+        costPerNight: 343.95
+      },
+      {
+        number: 22,
+        roomType: 'single room',
+        bidet: false,
+        bedSize: 'full',
+        numBeds: 2,
+        costPerNight: 350.31
+      }
+    ])
+  })
 
-  // it('Should store a customer ID', () => {
-  //   expect(booking1.customerId).to.equal(25)
-  //   expect(booking2.customerId).to.equal(42)
-  // })
-
-  // it('Should store a booking date', () => {
-  //   expect(booking1.bookingDate).to.equal("2022/01/11")
-  //   expect(booking2.bookingDate).to.equal("2022/02/14")
-  // })
-
-  // it('Should store a room number', () => {
-  //   expect(booking1.roomNumber).to.equal(9)
-  //   expect(booking2.roomNumber).to.equal(6)
-  // })
-
-  // it('Should store a cost per night with the method getRoomCostPerNight()', () => {
-  //   booking1.getRoomCostPerNight(allRooms)
-  //   booking2.getRoomCostPerNight(allRooms)
-  //   expect(booking1.costPerNight).to.equal(200.39)
-  //   expect(booking2.costPerNight).to.equal(397.02)
-  // })
-  
-
+  it('Should return an empty array of available rooms on specified date with method getAvailableRooms() after getting unavailable rooms', () => {
+    let unavailableRooms = bookings2.getUnavailableRooms('2022-12-12')
+    expect(bookings2.getAvailableRooms(allRooms, unavailableRooms)).to.deep.equal([])
+  })
 })
