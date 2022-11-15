@@ -74,6 +74,8 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
+  background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%);
+
 }
 
 .resort-image {
