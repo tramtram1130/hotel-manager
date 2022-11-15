@@ -1,13 +1,13 @@
 <a name="readme-top"></a>
 
 <!-- HEADER -->
-<h1 align="center">Hotel Manager</h1>
+<h1 align="center">Yubaba's Bath House & Resort</h1>
 
 <h3 align="center">A Hotel Booking Site</h3>
 
 <!-- <h4 align="center"><a href="https://vfields.github.io/travel-tracker/"><strong>Deploy Link</strong></a> | <a href="https://github.com/vfields/travel-tracker"><strong>Explore The Docs »</strong></a></h4> -->
 
-<h5 align="center">(PS. Your username is <code>customer</code> plus any number between <code>1-50</code>, i.e. <code>customer25</code>, and your password is <code>yubaba</code>!)</h5>
+<h5 align="center">(PS. Your username is <code>customer</code> plus any number between <code>1-50</code>, i.e. <code>customer25</code>, and your password is <code>overlook2021</code>!)</h5>
 
 <p></p>
 
@@ -34,13 +34,15 @@
 </details> -->
 
 ## About The Project
-<!-- Interested in traveling the world, but having trouble organizing your trips? Travel Tracker will not only record and display your past, pending, and upcoming trips, but it will also allow you to request a new trip to be reviewed by one of its trusted travel agents! This password-protected site also keeps track of how much you've spent during the current year on travel, so you know where you stand financially as you consider your next destination.
+Have you ever wanted to step into the whimsical world of Hayao Miyazaki's Spirited Away? Yubaba has finally opened her infamous Bath House to the mortal realm and you may now book a stay through their accompany web app! This password-protected service not only monitors your past and future reservations, but it also tracks how much of your wealth you've surrendered to the spirit world!
 <br>
 <p align="center">
-    <img width="500" src="https://media.giphy.com/media/JpoDBwkRLFbMkR3Cks/giphy.gif" alt="Travel Tracker preview gif">
+    <img width="700" src="https://user-images.githubusercontent.com/110209726/201823763-e89c8d1c-68e5-4ffb-91ee-26c70aa3cb94.gif" alt="Hotel Manager preview gif">
+    <img width="700" src="https://user-images.githubusercontent.com/110209726/201823890-e589e15d-e38e-42ff-b6de-205edad4db69.png" alt="Hotel Manager preview image">
+
 </p>
 <br />
-This solo project was assigned at the end of the second module of Turing's Front-End Engineering program, about 11-12 weeks into its students learning how to code. The details of this project are outlined in <a href="https://frontend.turing.edu/projects/travel-tracker.html">this</a> project spec. -->
+This solo project was assigned at the end of the second module of Turing's Front-End Engineering program, about 11-12 weeks into its students learning how to code. The details of this project are outlined in <a href="https://frontend.turing.edu/projects/overlook.html">this</a> project spec.
 
 ### Built With
 
@@ -61,30 +63,30 @@ This solo project was assigned at the end of the second module of Turing's Front
 - Run `npm install` to install project dependencies
 - Run `npm start` to launch the live server
 - Copy and paste the provided localhost URL into your browser
-- Remember, your username is <code>traveler</code> plus any number between <code>1-50</code>, i.e. <code>traveler40</code>, and your password is <code>travel</code>!
+- Remember, your username is <code>customer</code> plus any number between <code>1-50</code>, i.e. <code>traveler26</code>, and your password is <code>overlook2021</code>!
 - Explore and enjoy!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Roadmap
 
-<!-- - [ ] Create travel agent interaction
-- [ ] Utilize DELETE network request via travel agent interaction -->
+- [ ] Create hotel manager interaction
+- [ ] Utilize DELETE network request via hotel manager interaction
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Features
 
-<!-- - Utilizes class-to-class interaction and a robust Mocha and Chai testing suite
+- Utilizes class-to-class interaction and a robust Mocha and Chai testing suite
 - Implements both GET and POST network requests via fetch API to retrieve, display, and add new user data
-- Handles both network request- and user-errors -->
+- Handles both network request- and user-errors
 
 ### Reflections
-<!-- <b>Wins:</b><br>
-Although I worked with asynchronous JavaScript during this module's group project, I feel this solo project solidified my understanding of it. This project also allowed me time to dedicate to better understanding error-handling, and I feel I've a firmer grasp on handling both network request and user generated errors for it!
+<b>Wins:</b><br>
+Asynchronous tasks and network requests are difficult concepts I struggled wrapping my head around throughout mod 2, but this project truly allowed me to have a better grasp of it!
 <p>
 <b>Challenges:</b><br>
-While I can see significant improvement in my ability to connect data and write dynamic code, I still feel there is some unnecessary repetition in my script and, therefore, I know that there is a cleaner/more dynamic solution to connect these data. -->
+I don't believe I utilized classes as optimally as I can since I feel like there's a bit of redundancy in my code.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
