@@ -1,7 +1,3 @@
-* {
-  font-family: 'Noto Sans Mende Kikakui', sans-serif;
-}
-
 body {
   background-color: white;
 }
@@ -9,65 +5,6 @@ body {
 .body-container {
   margin: 0;
   height: fit-content;
-}
-
-.login-container {
-  display: flex;
-  justify-content: center;
-  background-color: rgb(172, 168, 200);
-  height: 100vh;
-}
-
-.login-styling {
-  display: flex;
-  align-self: center;
-  width: 60%;
-  height: 70%;
-}
-
-.login-form-container,
-.login-art-container {
-  background-color: white;
-  height: 70vh;
-  width: 50%;
-}
-
-.no-face-image {
-  height: 100%; 
-  width: 100%; 
-  object-fit: cover;
-}
-
-#username,
-#password {
-  margin: 10px 0px 10px 0px;
-  width: 19.5vw;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: solid;
-  background-color: transparent;
-}
-
-.welcome-back-title {
-  margin-bottom: -2px;
-  font-size: 5vh;
-}
-
-.welcome-back-title,
-.please-enter-details-title,
-.login-label,
-#username,
-#password,
-.login-button {
-  margin-left: 3vw;
-}
-
-.login-button {
-  height: 4vh;
-  border: 0;
-  border-radius: 3px;
-  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
 }
 
 .greeting-container {
@@ -84,11 +21,11 @@ body {
 
 .resort-name {
   position: absolute;
-  margin-top: 3.5vw;
   font-size: 4vw;
   color: white;
   font-family: 'Cinzel';
   text-shadow: 4px 4px 10px #3d3d3d;
+  margin-top: 3.5vw;
 }
 
 .booking-container {
@@ -107,7 +44,8 @@ body {
   justify-content: space-evenly;
 }
 
-.date-form-container {
+.date-form-container, 
+.button-container {
   display: flex;
   flex-direction: column;
 }
@@ -132,12 +70,10 @@ body {
   box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
 }
 
-.login-button,
 .book-button {
   width: 8vw;
 }
 
-.login-button,
 .check-date-availability-button, 
 .check-room-availability-button,
 .guest-portal-button,
@@ -147,7 +83,6 @@ body {
   transition-duration: 0.4s;
 }
 
-.login-button:hover,
 .check-date-availability-button:hover, 
 .check-room-availability-button:hover,
 .guest-portal-button:hover,
@@ -189,13 +124,11 @@ body {
   margin: 20px 40px 20px 40px;
 }
 
-.available-rooms-title,
-.login-error-message {
+.available-rooms-title {
   text-align: center;
 }
 
-.spending-container-styling,
-.available-rooms-styling {
+.spending-container-styling {
   display: flex;
   justify-content: center;
 }
@@ -207,6 +140,11 @@ body {
   justify-content: space-evenly;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   margin-bottom: 10vh;
+}
+
+.available-rooms-styling {
+  display: flex;
+  justify-content: center;
 }
 
 .available-rooms-container {
@@ -221,6 +159,15 @@ body {
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
+.available-rooms-title,
+.apology-title,
+.past-bookings-title,
+.future-bookings-title,
+.spending-title,
+.booked-message-title {
+  font-family: 'Noto Sans Mende Kikakui', sans-serif;
+}
+
 .apology-title,
 .booked-message-title {
   margin-top: -.7vh;
@@ -233,6 +180,7 @@ body {
 
 p,
 li {
+  font-family: 'Noto Sans Mende Kikakui', sans-serif;
   margin-top: -1px;
   margin-bottom: -1px;
 }
